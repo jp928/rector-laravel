@@ -1,9 +1,9 @@
 {
-  "name": "rector-lara/laravel-eloquent-generic-rector",
-  "description": "Custom Rector rule to add generics to Laravel Eloquent relationships",
+  "name": "rector-laravel/rules",
+  "description": "Rector rules for Laravel",
   "type": "library",
   "license": "MIT",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "authors": [
     {
       "name": "Jingtai Piao",
@@ -19,7 +19,7 @@
   },
   "autoload": {
     "psr-4": {
-      "RectorLaravel\\Rules\\": "src/"
+      "RectorLaravel\\Rules\\": "src/Rules/"
     }
   },
   "autoload-dev": {
