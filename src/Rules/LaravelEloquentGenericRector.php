@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RectorLaravel\Rules;
+namespace RectorLaravelCustomRules\Rules;
 
 use PhpParser\Node;
 use PhpParser\Node\Name;
@@ -21,7 +21,7 @@ use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
 use Rector\Comments\NodeDocBlock\DocBlockUpdater;
 
 /**
- * @see \RectorLaravel\Tests\LaravelEloquentGenericRectorTest
+ * @see \RectorLaravelCustomRules\Tests\LaravelEloquentGenericRectorTest
  */
 final class LaravelEloquentGenericRector extends AbstractRector
 {

@@ -1,5 +1,5 @@
 {
-  "name": "rector-laravel/rules",
+  "name": "rector-laravel-custom-rules/rules",
   "description": "Rector rules for Laravel",
   "type": "library",
   "license": "MIT",
@@ -19,12 +19,12 @@
   },
   "autoload": {
     "psr-4": {
-      "RectorLaravel\\Rules\\": "src/Rules/"
+      "RectorLaravelCustomRules\\Rules\\": "src/Rules/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "RectorLaravel\\Tests\\": "tests/"
+      "RectorLaravelCustomRules\\Tests\\": "tests/"
     },
     "files": [
       "vendor/rector/rector/preload.php"

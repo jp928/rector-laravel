@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RectorLaravel\Tests;
+namespace RectorLaravelCustomRules\Tests;
 
 use Rector\Testing\PHPUnit\AbstractRectorTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
