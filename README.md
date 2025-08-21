@@ -47,7 +47,7 @@ Edit your `rector.php` file:
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
-use Ofload\LaravelEloquentGenericRector\LaravelEloquentGenericRector;
+use RectorLaravelCustomRules\Rules\LaravelEloquentGenericRector;
 
 return RectorConfig::configure()
     ->withRules([
