@@ -7,6 +7,7 @@ namespace RectorLaravelCustomRules\Rules;
 use PhpParser\Node;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\ClassMethod;
+use PhpParser\Node\Stmt\Return_;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\ClassConstFetch;
 use PHPStan\PhpDocParser\Ast\Type\GenericTypeNode;
@@ -24,7 +25,6 @@ use Rector\Comments\NodeDocBlock\DocBlockUpdater;
  */
 final class LaravelEloquentGenericRector extends AbstractRector
 {
-    
     const array RELATION_TYPES = [
         'BelongsTo',
         'HasOne', 
