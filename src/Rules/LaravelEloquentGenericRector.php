@@ -9,7 +9,6 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Expr\MethodCall;
 use PhpParser\Node\Expr\ClassConstFetch;
-use PhpParser\Node\Scalar\String_;
 use PHPStan\PhpDocParser\Ast\Type\GenericTypeNode;
 use PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\ReturnTagValueNode;
@@ -145,26 +144,48 @@ CODE_SAMPLE
         }
 
         foreach ($method->stmts as $stmt) {
-            if ($stmt instanceof Node\Stmt\Return_) {
+            if ($stmt instanceof Return_) {
                 $expr = $stmt->expr;
 
                 if ($expr instanceof MethodCall) {
-                    $firstArg = $expr->args[0]->value ?? null;
+                    // Find the root relation method call by traversing up the chain
+                    $relationCall = $this->findRootRelationCall($expr);
 
-                    if ($firstArg instanceof ClassConstFetch && $firstArg->class instanceof Name) {
-                        $fqdn = $firstArg->class->toString();
+                    if ($relationCall !== null) {
+                        $firstArg = $relationCall->args[0]->value ?? null;
 
-                        return end(explode('\\', $fqdn));
-                    }
+                        if ($firstArg instanceof ClassConstFetch && $firstArg->class instanceof Name) {
+                            $fqdn = $firstArg->class->toString();
 
-                    if ($firstArg instanceof String_) {
-                        return $firstArg->value;
+                            return end(explode('\\', $fqdn));
+                        }
                     }
                 }
             }
         }
 
         return null;
+    }
+
+    private function findRootRelationCall(MethodCall $expr): ?MethodCall
+    {
+        // Check if this is a relation method call
+        if ($this->isRelationCall($expr)) {
+            return $expr;
+        }
+
+        // If not, check the var (left side) recursively
+        if ($expr->var instanceof MethodCall) {
+            return $this->findRootRelationCall($expr->var);
+        }
+
+        return null;
+    }
+
+    private function isRelationCall(MethodCall $expr): bool
+    {
+        $funcName = $expr->name->toString();
+        return in_array($funcName, ['belongsTo', 'hasOne', 'hasMany', 'morphOne', 'morphMany', 'morphTo']);
     }
 
     private function getShortClassName(string $fullClassName): string

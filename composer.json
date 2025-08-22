@@ -19,7 +19,7 @@
   },
   "autoload": {
     "psr-4": {
-      "RectorLaravelCustomRules\\Rules\\": "src/Rules/"
+      "RectorLaravelCustomRules\\": "src/"
     }
   },
   "autoload-dev": {
