@@ -4,3 +4,5 @@
 /docker-compose.yml export-ignore
 /Dockerfile export-ignore
 /.gitignore export-ignore
+/CHANGELOG.md export-ignore
+/.phpunit.cache export-ignore

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace RectorLaravelCustomRules\Tests;
 
-use Rector\Testing\PHPUnit\AbstractRectorTestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
+use Rector\Testing\PHPUnit\AbstractRectorTestCase;
 
 final class LaravelEloquentGenericRectorTest extends AbstractRectorTestCase
 {
@@ -17,11 +17,11 @@ final class LaravelEloquentGenericRectorTest extends AbstractRectorTestCase
 
     public static function provideData(): \Iterator
     {
-        return self::yieldFilesFromDirectory(__DIR__ . '/Fixture');
+        return self::yieldFilesFromDirectory(__DIR__.'/Fixture');
     }
 
     public function provideConfigFilePath(): string
     {
-        return __DIR__ . '/config/configured_rule.php';
+        return __DIR__.'/config/configured_rule.php';
     }
 }
